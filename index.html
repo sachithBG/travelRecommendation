@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TravelBloom - Explore Dream Destination</title>
+  <title>WanderWave - Explore Dream Destination</title>
   <style>
     * {
       margin: 0;
@@ -24,29 +24,55 @@
       justify-content: space-between;
       align-items: center;
     }
-    nav ul {
+    nav .menu {
       list-style: none;
       display: flex;
     }
-    nav ul li {
+    nav .menu li {
       margin: 0 15px;
     }
-    nav ul li a {
+    nav .menu li a {
       color: white;
       text-decoration: none;
       font-weight: bold;
     }
-    nav ul li a:hover {
+    nav .menu li a:hover {
       color: #f39c12;
     }
     .logo {
       font-size: 1.5rem;
       font-weight: bold;
     }
+    .search-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .search-section input {
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .search-section button {
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .search-section button:hover {
+      background-color: #219150;
+    }
+
+    /* Sections */
+    section {
+      padding: 50px 20px;
+    }
 
     /* Home Section */
     header {
-      background: url('img.jpg') no-repeat center center/cover;
+      background: url('https://images.unsplash.com/photo-1571955179352-956a4399b679?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
       height: 100vh;
       display: flex;
       flex-direction: column;
@@ -57,50 +83,52 @@
     }
     header h1 {
       font-size: 4rem;
-      font-weight: bold;
     }
     header p {
       margin: 20px 0;
       font-size: 1.2rem;
-      max-width: 600px;
     }
     .cta-button {
       background-color: #27ae60;
-      color: white;
-      border: none;
       padding: 10px 20px;
-      font-size: 1rem;
+      border: none;
       border-radius: 5px;
       cursor: pointer;
+      color: white;
       text-transform: uppercase;
     }
-    .cta-button:hover {
-      background-color: #219150;
+
+    /* Results Section */
+    #results {
+      display: none;
+      text-align: center;
+    }
+    #results img {
+      width: 300px;
+      border-radius: 10px;
+      margin: 20px;
     }
 
-    /* About Us Section */
+    /* About Section */
     #about {
-      padding: 50px 20px;
       text-align: center;
-      background: url('img2.jpg') no-repeat center center/cover;
+      background: url('https://plus.unsplash.com/premium_photo-1724691156743-07c0941aa688?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+      color: white;
+      padding: 50px 20px;
     }
     #about h2 {
       font-size: 3rem;
-      color: #333;
-      margin-bottom: 20px;
     }
     #about p {
+      margin: 20px 0;
       font-size: 1.2rem;
-      line-height: 1.8;
       max-width: 800px;
-      margin: 0 auto;
-      color: #555;
+      margin: auto;
     }
 
     /* Team Section */
     #team {
       background-color: #f4f4f4;
-      padding: 50px 20px;
       text-align: center;
     }
     #team h2 {
@@ -114,18 +142,10 @@
     }
     .team-member {
       background-color: white;
-      border-radius: 10px;
       padding: 20px;
-      text-align: center;
+      border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 250px;
-    }
-    .team-member img {
-      border-radius: 50%;
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      margin-bottom: 10px;
+      width: 200px;
     }
     .team-member h3 {
       font-size: 1.2rem;
@@ -133,74 +153,65 @@
     }
     .team-member p {
       font-size: 0.9rem;
-      color: #666;
-    }
-    .team-member button {
-      background-color: #27ae60;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .team-member button:hover {
-      background-color: #219150;
+      color: #555;
     }
 
-    /* Social Links */
-    .social-links {
-      position: fixed;
-      top: 50%;
-      left: 10px;
-      transform: translateY(-50%);
+    /* Contact Section */
+    #contact form {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      max-width: 400px;
+      margin: auto;
     }
-    .social-links a {
-      color: white;
-      font-size: 1.5rem;
-      display: block;
-      text-align: center;
-      background-color: #000;
-      border-radius: 5px;
+    #contact form input,
+    #contact form textarea {
       padding: 10px;
-      text-decoration: none;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
     }
-    .social-links a:hover {
-      background-color: #f39c12;
+    #contact form button {
+      padding: 10px;
+      border: none;
+      background-color: #27ae60;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #contact form button:hover {
+      background-color: #219150;
     }
   </style>
 </head>
 <body>
   <!-- Navigation -->
   <nav>
-    <div class="logo">TravelBloom</div>
-    <ul>
+    <div class="logo">WanderWave</div>
+    <ul class="menu">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About Us</a></li>
       <li><a href="#team">Our Team</a></li>
+      <li><a href="#contact">Contact Us</a></li>
     </ul>
+    <div class="search-section">
+      <input id="search-input" type="text" placeholder="Search...">
+      <button id="search-button">Search</button>
+      <button id="clear-button">Clear</button>
+    </div>
   </nav>
 
   <!-- Home Section -->
   <header id="home">
     <h1>Explore Dream Destination</h1>
-    <p>
-      It encourages exploration of unfamiliar territories, embracing diverse cultures and landscapes, while pursuing the desired destination that captivates the heart and ignites a sense of wonder.
-    </p>
+    <p>Discover breathtaking landscapes, exciting adventures, and unforgettable experiences with us.</p>
     <button class="cta-button">Book Now</button>
   </header>
 
   <!-- About Us Section -->
   <section id="about">
     <h2>About Us</h2>
-    <p>
-      Welcome to Our Company! We are a team of passionate individuals dedicated to providing excellent services/products to our customers!
-      Our mission is to provide the best experience for people traveling to different destinations worldwide. 
-      Our values include integrity, innovation, customer satisfaction, and teamwork. 
-      We believe in putting our customers first and working together to achieve our goals.
-    </p>
+    <p>WanderWave is dedicated to making your travel dreams come true. With years of experience and a passion for adventure, we deliver unparalleled travel experiences worldwide.</p>
   </section>
 
   <!-- Team Section -->
@@ -208,32 +219,37 @@
     <h2>Our Team</h2>
     <div class="team-members">
       <div class="team-member">
-        <img src="https://via.placeholder.com/100" alt="John Doe">
         <h3>John Doe</h3>
         <p>CEO</p>
-        <button>Read More</button>
       </div>
       <div class="team-member">
-        <img src="https://via.placeholder.com/100" alt="Celina Thomas">
         <h3>Celina Thomas</h3>
         <p>Team Lead</p>
-        <button>Read More</button>
       </div>
       <div class="team-member">
-        <img src="https://via.placeholder.com/100" alt="Mike Tyson">
         <h3>Mike Tyson</h3>
         <p>Delivery Head</p>
-        <button>Read More</button>
       </div>
     </div>
   </section>
 
-  <!-- Social Links -->
-  <div class="social-links">
-    <a href="#" title="Twitter">T</a>
-    <a href="#" title="Facebook">F</a>
-    <a href="#" title="Instagram">I</a>
-    <a href="#" title="YouTube">Y</a>
-  </div>
+  <!-- Results Section -->
+  <section id="results">
+    <h2>Recommended Beaches</h2>
+    <div id="beach-recommendations"></div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form id="contact-form">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <script src="travel_recommendation.js"></script>
 </body>
 </html>
