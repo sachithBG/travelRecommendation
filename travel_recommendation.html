@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Recommendation</title>
+  <style>
+    /* Add some basic styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #4caf50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+    }
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      margin: 10px 0;
+      background: white;
+    }
+    .card h2 {
+      margin: 0 0 10px;
+    }
+  </style>
+  <script src="travel_recommendation.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Travel Recommendation</h1>
+    <p>Discover new places to explore!</p>
+  </header>
+
+  <main>
+    <div id="recommendations">
+      <!-- Travel recommendations will be added dynamically using JavaScript -->
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Travel Recommendation Inc. | Powered by JavaScript</p>
+  </footer>
+
+  <script>
+    // Basic JavaScript logic for adding travel recommendations
+    const recommendations = [
+      { place: "Paris, France", description: "The city of lights, famous for the Eiffel Tower and art museums." },
+      { place: "Kyoto, Japan", description: "Known for its classical Buddhist temples, as well as gardens and imperial palaces." },
+      { place: "Cape Town, South Africa", description: "Famous for its Table Mountain and stunning coastlines." }
+    ];
+
+    const container = document.getElementById('recommendations');
+
+    recommendations.forEach(rec => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <h2>${rec.place}</h2>
+        <p>${rec.description}</p>
+      `;
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>
