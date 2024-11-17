@@ -157,8 +157,10 @@
     }
 
     /* Contact Section */
-    #contac .h2 {
-      text-align: center;
+
+    #contact h2{
+        display: flex;
+        justify-content: center;
     }
     #contact form {
       display: flex;
@@ -244,13 +246,15 @@
 
   <!-- Contact Section -->
   <section id="contact">
-    <h2 class="h2">Contact Us</h2>
+    <h2>Contact Us</h2>
+    <div>
     <form id="contact-form">
       <input type="text" id="name" placeholder="Your Name" required>
       <input type="email" id="email" placeholder="Your Email" required>
       <textarea id="message" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
+    </div>
   </section>
 
   <script src="travel_recommendation.js"></script>
